@@ -4,6 +4,7 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import authMiddleware from "../middleware.js";
+import Account from "../models/Accounts.js";
 
 const router = express.Router();
 
@@ -30,6 +31,11 @@ router.post("/signup", async (req, res) => {
       password: hashedPassword,
       firstName: data.firstName,
       lastName: data.lastName,
+    });
+    const userId = newUser._id;
+    await Account.create({
+      userId: userId,
+      balance: 1 + Math.random() * 100000,
     });
 
     const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET);
