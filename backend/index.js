@@ -1,6 +1,6 @@
 // imports
 import express from "express";
-import { connect } from "mongoose";
+import mongoose from "mongoose";
 import rootRouter from "./routes/index.js";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -16,10 +16,7 @@ app.use(cors());
 app.use("/api/v1", rootRouter);
 
 // mongoDB connection
-connect(process.env.MONGO_URL)
-  .then(() => {
-    console.log("connected to db");
-    // start server
-    app.listen(PORT, () => console.log("server is running"));
-  })
-  .catch((err) => console.log(err));
+const db = await mongoose.connect(process.env.MONGO_URL);
+if (db) {
+  app.listen(PORT, () => console.log("server is running"));
+}

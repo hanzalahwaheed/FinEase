@@ -82,7 +82,6 @@ router.put("/", authMiddleware, async (req, res) => {
     res.status(411).json({
       message: "Error while updating information",
     });
-
   try {
     await User.updateOne({ _id: req.userId }, req.body);
     res.status(200).json({ message: "Updated successfully" });
@@ -91,6 +90,7 @@ router.put("/", authMiddleware, async (req, res) => {
   }
 });
 
+// (search bar functionality)
 router.get("/bulk", async (req, res) => {
   const filter = req.query.filter || "";
   const users = await User.find({
