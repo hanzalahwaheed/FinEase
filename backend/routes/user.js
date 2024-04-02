@@ -39,12 +39,12 @@ router.post("/signup", async (req, res) => {
     });
 
     const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET);
-
     res.status(201).json({
       message: "User created successfully",
       token: token,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
