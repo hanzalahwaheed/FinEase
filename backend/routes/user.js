@@ -90,7 +90,7 @@ router.put("/", authMiddleware, async (req, res) => {
   }
 });
 
-// (search bar functionality)
+// search bar functionality or get all users
 router.get("/bulk", authMiddleware, async (req, res) => {
   const filter = req.query.filter || "";
   const users = await User.find({

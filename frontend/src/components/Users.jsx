@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 export const Users = () => {
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState("");
-
+  const token = localStorage.getItem("token");
+  console.log(token);
   // add debouncing
   const getUsers = async () => {
     const response = await axios.get(
-      "http://localhost:5000/api/v1/user/bulk?filter=" + filter
+      "http://localhost:5000/api/v1/user/bulk?filter=" + filter,
+      { headers: { Authorization: "Bearer " + token } }
     );
     setUsers(response.data.user);
   };
@@ -31,8 +33,8 @@ export const Users = () => {
         ></input>
       </div>
       <div>
-        {users.map((user) => (
-          <User user={user} />
+        {users.map((index, user) => (
+          <User user={user} key={index} />
         ))}
       </div>
     </div>
@@ -57,7 +59,12 @@ function User({ user }) {
       </div>
 
       <div className="flex flex-col justify-center h-ful">
-        <Button onClick={() => navigate("/send")} text={"Send Money"} />
+        <Button
+          onClick={(e) =>
+            navigate("/send?id=" + user._id + "&name=" + user.firstName)
+          }
+          text={"Send Money"}
+        />
       </div>
     </div>
   );
