@@ -1,9 +1,7 @@
-import React from 'react'
+import { SendMoneyCard } from "../components/SendMoneyCard.jsx";
 
 const SendMoney = () => {
-  return (
-    <div>SendMoney</div>
-  )
-}
+  return <SendMoneyCard />;
+};
 
-export default SendMoney
+export default SendMoney;
