@@ -13,7 +13,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       if (!token) {
-        navigate("/login");
+        navigate("/signin");
         return;
       }
       const response = await axios.get(`${BASE_URL}/account/balance`, {
@@ -27,7 +27,20 @@ const Dashboard = () => {
     }
   };
 
+  const isAuthenticated = async () => {
+    const token = localStorage.getItem("token");
+    const response = await axios.get(`${BASE_URL}/me`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response) {
+      navigate("/signin");
+    }
+  };
+
   useEffect(() => {
+    isAuthenticated();
     getBalance();
   }, []);
 
