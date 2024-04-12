@@ -4,6 +4,7 @@ import authMiddleware from "../middleware.js";
 import Account from "../models/Accounts.js";
 
 const router = express.Router();
+
 router.get("/balance", authMiddleware, async (req, res) => {
   const account = await Account.findOne({
     userId: req.userId,
