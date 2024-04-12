@@ -1,6 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const SendMoneyCard = () => {
   const [searchParams] = useSearchParams();
@@ -42,7 +43,7 @@ export const SendMoneyCard = () => {
               <button
                 onClick={async () => {
                   const response = await axios.post(
-                    "http://localhost:5000/api/v1/account/transfer",
+                    `${BASE_URL}/account/transfer`,
                     { to: id, amount },
                     {
                       headers: {

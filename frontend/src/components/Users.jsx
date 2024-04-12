@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "./Button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const Users = () => {
   const [users, setUsers] = useState([]);
@@ -10,7 +11,7 @@ export const Users = () => {
   // add debouncing
   const getUsers = async () => {
     const response = await axios.get(
-      "http://localhost:5000/api/v1/user/bulk?filter=" + filter,
+      `${BASE_URL}/user/bulk?filter=` + filter,
       { headers: { Authorization: "Bearer " + token } }
     );
     setUsers(response.data.user);
@@ -33,7 +34,7 @@ export const Users = () => {
       </div>
       <div>
         {users.map((user) => (
-          <SingleUser user={user} key={user._id}/>
+          <SingleUser user={user} key={user._id} />
         ))}
       </div>
     </div>

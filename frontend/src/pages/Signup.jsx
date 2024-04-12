@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import BottomWarning from "../components/BottomWarning";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
@@ -42,15 +43,12 @@ const Signup = () => {
           />
           <Button
             onClick={async () => {
-              const response = await axios.post(
-                "http://localhost:5000/api/v1/user/signup",
-                {
-                  firstName,
-                  lastName,
-                  email,
-                  password,
-                }
-              );
+              const response = await axios.post(`${BASE_URL}/user/signup`, {
+                firstName,
+                lastName,
+                email,
+                password,
+              });
               localStorage.setItem("token", response.data.token);
               navigate("/dashboard");
             }}

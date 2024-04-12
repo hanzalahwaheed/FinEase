@@ -4,6 +4,7 @@ import Balance from "../components/Balance.jsx";
 import { Users } from "../components/Users";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Dashboard = () => {
   const [balance, setBalance] = useState(0);
@@ -15,14 +16,11 @@ const Dashboard = () => {
         navigate("/login");
         return;
       }
-      const response = await axios.get(
-        "http://localhost:5000/api/v1/account/balance",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${BASE_URL}/account/balance`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setBalance(response.data.balance);
     } catch (error) {
       console.error("Error fetching balance:", error);
