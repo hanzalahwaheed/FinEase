@@ -18,5 +18,5 @@ app.use("/api/v1", rootRouter);
 // mongoDB connection
 const db = await mongoose.connect(process.env.MONGO_URL);
 if (db) {
-  app.listen(PORT, () => console.log("server is running"));
+  app.listen(PORT, () => console.log("connected to DB and server running"));
 }
