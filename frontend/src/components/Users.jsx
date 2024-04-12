@@ -7,7 +7,6 @@ export const Users = () => {
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState("");
   const token = localStorage.getItem("token");
-  console.log(token);
   // add debouncing
   const getUsers = async () => {
     const response = await axios.get(
@@ -33,15 +32,15 @@ export const Users = () => {
         ></input>
       </div>
       <div>
-        {users.map((index, user) => (
-          <User user={user} key={index} />
+        {users.map((user) => (
+          <SingleUser user={user} key={user._id}/>
         ))}
       </div>
     </div>
   );
 };
 
-function User({ user }) {
+function SingleUser({ user }) {
   const navigate = useNavigate();
   return (
     <div className="flex justify-between">

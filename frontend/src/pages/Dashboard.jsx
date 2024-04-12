@@ -37,7 +37,7 @@ const Dashboard = () => {
     <div>
       <Appbar />
       <Balance value={balance} />
-      {/* <Users /> */}
+      <Users />
     </div>
   );
 };
