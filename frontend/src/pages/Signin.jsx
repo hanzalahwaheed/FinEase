@@ -31,7 +31,7 @@ const Signin = () => {
           />
           <Button
             onClick={async () => {
-              const response = await axios.post(`${BASE_URL}/api/v1/user/signin`, {
+              const response = await axios.post(`${BASE_URL}api/v1/user/signin`, {
                 email,
                 password,
               });

@@ -11,7 +11,7 @@ export const Users = () => {
   // add debouncing
   const getUsers = async () => {
     const response = await axios.get(
-      `${BASE_URL}/api/v1/user/bulk?filter=` + filter,
+      `${BASE_URL}api/v1/user/bulk?filter=` + filter,
       { headers: { Authorization: "Bearer " + token } }
     );
     setUsers(response.data.user);

@@ -12,7 +12,7 @@ const App = () => {
 
   const isAuthenticated = async () => {
     const token = localStorage.getItem("token");
-    const response = await axios.get(`${BASE_URL}/api/v1/me`, {
+    const response = await axios.get(`${BASE_URL}api/v1/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
