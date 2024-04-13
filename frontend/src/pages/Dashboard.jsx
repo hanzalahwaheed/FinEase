@@ -4,11 +4,15 @@ import Balance from "../components/Balance.jsx";
 import { Users } from "../components/Users";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import userState from "../store/index.js";
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Dashboard = () => {
   const [balance, setBalance] = useState(0);
   const navigate = useNavigate();
+  const [user, setUser] = useRecoilState(userState);
+
   const getBalance = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -37,6 +41,7 @@ const Dashboard = () => {
     if (!response) {
       navigate("/signin");
     }
+    setUser(response.data.user.firstName);
   };
 
   useEffect(() => {
@@ -46,7 +51,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Appbar />
+      <Appbar userFromDashboard={user}/>
       <Balance value={balance} />
       <Users />
     </div>
