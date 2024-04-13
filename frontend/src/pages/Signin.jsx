@@ -6,11 +6,14 @@ import BottomWarning from "../components/BottomWarning";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import userState from "../store";
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useRecoilState(userState);
   const navigate = useNavigate();
   return (
     <div className="bg-slate-300 h-screen flex justify-center">
@@ -31,11 +34,15 @@ const Signin = () => {
           />
           <Button
             onClick={async () => {
-              const response = await axios.post(`${BASE_URL}api/v1/user/signin`, {
-                email,
-                password,
-              });
+              const response = await axios.post(
+                `${BASE_URL}api/v1/user/signin`,
+                {
+                  email,
+                  password,
+                }
+              );
               localStorage.setItem("token", response.data.token);
+              setUser(response.data.user.firstName);
               navigate("/dashboard");
             }}
             text="Sign In"

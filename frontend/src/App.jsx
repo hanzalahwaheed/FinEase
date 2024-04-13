@@ -5,6 +5,7 @@ import Signin from "./pages/Signin";
 import Dashboard from "./pages/Dashboard";
 import SendMoneyCard from "./pages/SendMoney";
 import axios from "axios";
+import { RecoilRoot } from "recoil";
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const App = () => {
@@ -26,17 +27,19 @@ const App = () => {
   }, [isAuth]);
 
   return (
-    <div className="font-redditmono">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={isAuth ? <Dashboard /> : <Signin />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/send" element={<SendMoneyCard />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <RecoilRoot>
+      <div className="font-redditmono">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={isAuth ? <Dashboard /> : <Signin />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/send" element={<SendMoneyCard />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </RecoilRoot>
   );
 };
 
