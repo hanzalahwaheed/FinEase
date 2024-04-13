@@ -12,7 +12,11 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(cors());
-// routes
+// default get route
+app.get("/", (req, res) => {
+  res.json("Finease backend APIs");
+});
+// other routes
 app.use("/api/v1", rootRouter);
 
 // mongoDB connection
