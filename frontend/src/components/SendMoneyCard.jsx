@@ -43,7 +43,7 @@ export const SendMoneyCard = () => {
               <button
                 onClick={async () => {
                   const response = await axios.post(
-                    `${BASE_URL}/account/transfer`,
+                    `${BASE_URL}/api/v1/account/transfer`,
                     { to: id, amount },
                     {
                       headers: {

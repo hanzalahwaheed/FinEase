@@ -16,7 +16,7 @@ const Dashboard = () => {
         navigate("/signin");
         return;
       }
-      const response = await axios.get(`${BASE_URL}/account/balance`, {
+      const response = await axios.get(`${BASE_URL}/api/v1/account/balance`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   const isAuthenticated = async () => {
     const token = localStorage.getItem("token");
-    const response = await axios.get(`${BASE_URL}/me`, {
+    const response = await axios.get(`${BASE_URL}/api/v1/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
