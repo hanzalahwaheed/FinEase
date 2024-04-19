@@ -16,9 +16,9 @@ const Signin = () => {
   const [user, setUser] = useRecoilState(userState);
   const navigate = useNavigate();
   return (
-    <div className="bg-slate-300 h-screen flex justify-center">
+    // <div className="bg-zinc-800 h-screen flex justify-center">
       <div className="flex flex-col justify-center w-1/4">
-        <div className="rounded-lg bg-white text-center">
+        <div className="rounded-lg bg-blue-500/30 text-center">
           <Heading label="Sign In" />
           <SubHeading text="Enter your credentials to access your account." />
           <InputBox
@@ -54,7 +54,7 @@ const Signin = () => {
           />
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 
