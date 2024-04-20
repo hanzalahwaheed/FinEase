@@ -11,7 +11,7 @@ const Hero = () => {
             Welcome to FinEase
           </h1>
           <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">
-            Finesse all you transactions and Payments with Ease.
+            Finesse all your Transactions and Payments with Ease!
           </p>
         </div>
         <Signin />
