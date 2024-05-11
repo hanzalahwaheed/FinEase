@@ -17,7 +17,7 @@ const Signin = () => {
   const navigate = useNavigate();
   return (
     // <div className="bg-zinc-800 h-screen flex justify-center">
-      <div className="flex flex-col justify-center w-1/4">
+      <div className="flex flex-col justify-center w-1/2">
         <div className="rounded-lg bg-blue-500/30 text-center">
           <Heading label="Sign In" />
           <SubHeading text="Enter your credentials to access your account." />

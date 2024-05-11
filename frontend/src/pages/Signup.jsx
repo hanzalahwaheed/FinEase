@@ -17,7 +17,7 @@ const Signup = () => {
 
   return (
     <div className="bg-slate-300 h-screen flex justify-center">
-      <div className="flex flex-col justify-center w-1/4">
+      <div className="flex flex-col justify-center w-1/2">
         <div className="rounded-lg bg-white text-center">
           <Heading label="Sign Up" />
           <SubHeading text="Enter your information to create an account." />
